@@ -1,0 +1,56 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+button,
+span {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.desktop-links {
+  display: none;
+}
+
+.menu-button {
+  display: block;
+}
+
+.mobile-drawer {
+  width: 200px;
+  background-color: #c2185b;
+}
+
+.drawer-content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.drawer-content button {
+  margin: 8px 0;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .desktop-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}

@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mysql-teste:
+    image: mysql:8.0
+    container_name: mysql-api-movielens
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: movielens123
+      MYSQL_DATABASE: db_movielens
+      MYSQL_PASSWORD: movielens123
+    ports:
+      - "${PORT_DATABASE:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./api_movielens
+      dockerfile: Dockerfile
+    container_name: backend-api
+    restart: always
+    depends_on:
+      - mysql-teste
+    environment:
+      DATABASE_URL: mysql://root:movielens123@mysql-teste:3306/db_movielens
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api_movielens:/app
+      - /app/node_modules
+    command: [ "sh", "-c", "npx prisma db push && npm run seed && npm start" ]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-app
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  mysql_data:

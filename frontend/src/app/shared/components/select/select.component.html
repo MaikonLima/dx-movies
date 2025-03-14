@@ -1,0 +1,13 @@
+<div class="custom-select">
+  <select
+    [(ngModel)]="selectedValue"
+    (change)="onSelectChange($event)"
+    class="select-box"
+    style="height: 3.5rem"
+  >
+    <option *ngFor="let option of options" [value]="option.value">
+      {{ option.label }}
+    </option>
+  </select>
+  <span class="select-arrow">&#9660;</span>
+</div>

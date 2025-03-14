@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+    <mat-icon>
+      <img src="../../../../assets/images/menu.svg" />
+    </mat-icon>
+  </button>
+
+  <span mat-button routerLink="/" class="title">MoviesFlix</span>
+
+  <div class="desktop-links ml-16 flex flex-row w-full">
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/movies">Movies</button>
+    <button mat-button routerLink="/genres">Genres</button>
+    <div class="flex flex-row justify-end w-full">
+      <button mat-button routerLink="/login" class="rounded-full">
+        <img src="../../../../assets/images/user.svg" />
+      </button>
+    </div>
+  </div>
+
+  <span class="spacer"></span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="end" class="mobile-drawer">
+    <div class="drawer-content">
+      <button mat-button routerLink="/" (click)="sidenav.close()">Home</button>
+      <button mat-button routerLink="/movies" (click)="sidenav.close()">
+        Movies
+      </button>
+      <button mat-button routerLink="/genres" (click)="sidenav.close()">
+        Genres
+      </button>
+      <button mat-button routerLink="/login" (click)="sidenav.close()">
+        Login
+      </button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

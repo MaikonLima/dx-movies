@@ -1,0 +1,59 @@
+<app-loading *ngIf="isFetching"></app-loading>
+<div class="flex flex-col m-10">
+  <h1 class="flex justify-start text-white mt-12">Movies</h1>
+  <div
+    class="flex flex-col justify-stretch lg:flex-row lg:justify-end lg:items-center gap-4 mb-4 mt-10"
+  >
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Search movies..."
+      class="p-4 border border-gray-300 rounded-lg flex-grow hover:border-red-400 active:border-red-400"
+    />
+    <div class="flex gap-4">
+      <app-select
+        [options]="selectOptions"
+        [(selectedValue)]="selectedGenre"
+        (selectedValueChange)="onGenreSelected($event)"
+      ></app-select>
+      <input
+        type="number"
+        [(ngModel)]="searchYear"
+        placeholder="Ano"
+        class="p-4 border border-gray-300 rounded-lg flex-grow hover:border-red-400 active:border-red-400"
+      />
+    </div>
+    <button
+      (click)="searchMovies()"
+      class="p-4 text-white rounded-lg hover:bg-blue-600"
+    >
+      Buscar
+    </button>
+  </div>
+  <section class="px-3 md:px-10 rounded-md">
+    <div
+      class="flex flex-col lg:grid lg:grid-cols-12 lg:justify-items-center lg:items-center gap-3"
+    >
+      <div
+        *ngFor="let movie of movies"
+        class="group col-span-6 sm:col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-3 transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg"
+      >
+        <a [routerLink]="['/details/movies', movie.links.tmdbId]">
+          <div class="relative flex-col items-center justify-center p-0 md:p-5">
+            <img
+              [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+              class="opacity-100 group-hover:opacity-50 rounded-lg"
+            />
+            <div class="bg-slate-800 p-2 gap-0 rounded-md">
+              <p class="text-white text-center">{{ movie.title }}</p>
+              <p class="text-white text-center">
+                Avaliação: {{ movie.tmdbRating }}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>

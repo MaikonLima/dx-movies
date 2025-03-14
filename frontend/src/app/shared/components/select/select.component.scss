@@ -1,0 +1,32 @@
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 600px;
+}
+
+.select-box {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+  color: #1e293b;
+
+  &:focus {
+    outline: none;
+    border-color: #c2185b;
+  }
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #c2185b;
+}

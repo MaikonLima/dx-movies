@@ -1,0 +1,23 @@
+<div
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+  (click)="close.emit()"
+>
+  <div
+    class="bg-white p-4 rounded-lg w-full max-w-2xl"
+    (click)="$event.stopPropagation()"
+  >
+    <iframe
+      [src]="getSafeUrl()"
+      width="100%"
+      height="400"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    <button
+      class="mt-4 bg-red-600 text-white px-4 py-2 rounded"
+      (click)="close.emit()"
+    >
+      Fechar
+    </button>
+  </div>
+</div>

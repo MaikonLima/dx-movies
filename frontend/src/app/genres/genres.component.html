@@ -1,0 +1,10 @@
+<div class="flex flex-col lg:grid lg:grid-cols-4 gap-6 m-10 h-screen lg:p-36">
+  <button
+    *ngFor="let genre of genres"
+    (click)="navigateToGenreMovies(genre.genre)"
+    class="bg-white h-20 hover:text-white grouptransform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-md"
+  >
+    {{ genre.genre }}
+  </button>
+</div>
+<app-footer></app-footer>

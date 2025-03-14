@@ -1,0 +1,63 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px;
+}
+
+.movie-card {
+  max-width: 400px;
+  text-align: center;
+  margin: 0 20px;
+
+  img {
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  &.prev-button {
+    left: 0;
+  }
+
+  &.next-button {
+    right: 0;
+  }
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+button {
+  background-color: #c2185b;
+  height: 3.5rem;
+}
+
+button:hover {
+  background-color: #c2185b;
+}
+
+input {
+  color: #1e293b;
+  font-family: "Poppins", sans-serif;
+  &:focus {
+    outline: none;
+    border-color: #c2185b;
+  }
+}

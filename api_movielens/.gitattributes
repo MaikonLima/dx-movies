@@ -1,0 +1,4 @@
+api_movielens/data/tags.csv filter=lfs diff=lfs merge=lfs -text
+api_movielens/data.zip filter=lfs diff=lfs merge=lfs -text
+api_movielens/data/ratings.csv filter=lfs diff=lfs merge=lfs -text
+api_movielens/data/*.csv filter=lfs diff=lfs merge=lfs -text

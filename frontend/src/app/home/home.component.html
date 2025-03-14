@@ -1,0 +1,101 @@
+<app-loading *ngIf="isFetching"></app-loading>
+<div>
+  <owl-carousel-o [options]="mainCarouselOptions">
+    <ng-container *ngFor="let movie of moviesTop">
+      <ng-template carouselSlide>
+        <div
+          class="bg-fixed bg-center bg-cover py-24 px-5 grid items-center slider-main"
+          [style.background-image]="
+            'linear-gradient(to right, black, rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original/' +
+            movie.poster_path +
+            ')'
+          "
+        >
+          <div class="p-5">
+            <div class="text-white w-12/12 md:w-4/12">
+              <p class="text-3xl font-bold whitespace-normal">
+                {{ movie.title || movie.original_name }}
+              </p>
+              <div class="flex space-x-2 pb-2 items-center text-gray-500">
+                <p
+                  class="flex flex-row justify-center items-center text-green-500 text-xs font-bold rounded-full py-1 px-2"
+                >
+                  <img src="../../assets/images/star.png" style="width: 15px" />
+                  {{ movie.tmdbRating }}/10
+                </p>
+                <p class="text-sm text-gray-400">|</p>
+                <p class="text-sm text-gray-400">
+                  {{ movie.runtime || 0 }} min
+                </p>
+              </div>
+              <p class="line-clamp-4 text-lg font-bold pt-2">
+                {{ movie.tagline }}
+              </p>
+              <p class="text-sm line-clamp-6">{{ movie.tmdbOverview }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>
+
+<div class="info-text">
+  <div class="flex flex-col gap-10 m-10">
+    <h1 class="flex justify-start text-white m-10">Top 10 Movies</h1>
+
+    <owl-carousel-o [options]="carouselOptions">
+      <ng-container *ngFor="let movie of moviesTop">
+        <ng-template carouselSlide>
+          <mat-card
+            class="movie-card transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg"
+          >
+            <a [routerLink]="['/details/movies', movie.links.tmdbId]">
+              <div class="relative flex items-center justify-center">
+                <img
+                  mat-card-image
+                  [src]="
+                    'https://image.tmdb.org/t/p/original' + movie.poster_path
+                  "
+                  [alt]="movie.title"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </a>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+
+<div class="info-text">
+  <div class="flex flex-col gap-10 m-10">
+    <h1 class="flex justify-start text-white m-10">Top Popular Movies</h1>
+
+    <owl-carousel-o [options]="carouselOptions">
+      <ng-container *ngFor="let movie of moviesPopular">
+        <ng-template carouselSlide>
+          <mat-card
+            class="movie-card transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg"
+          >
+            <a [routerLink]="['/details/movies', movie.links.tmdbId]">
+              <div class="relative flex items-center justify-center">
+                <img
+                  mat-card-image
+                  [src]="
+                    'https://image.tmdb.org/t/p/original' + movie.poster_path
+                  "
+                  [alt]="movie.title"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </a>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+
+<app-footer></app-footer>
