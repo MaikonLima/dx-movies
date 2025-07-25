@@ -8,7 +8,7 @@ import { map, Observable } from 'rxjs';
 export class ApiService {
   private apiUrl = 'http://localhost:3000';
   private tmdbApiUrl = 'https://api.themoviedb.org/3';
-  private apiKey = '73fa89d4f5be62640fd7fb9a794d4ba6';
+  private apiKey = '_sua_chave_api';
 
   constructor(private http: HttpClient) {}
 
